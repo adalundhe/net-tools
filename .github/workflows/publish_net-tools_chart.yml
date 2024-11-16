@@ -36,13 +36,17 @@ jobs:
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
-    - name: Install Helm
+    - name: Publish Chart
       shell: bash
       run: |
+
         curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
-        helm version
-    - name: Package Chart
-      shell: bash
-      run: |
+
         cd helm
         helm package net-tools
+
+        NET_TOOLS_PACKAGE=$(find . -name "*.tgz" | xargs basename)
+
+        echo ${{ secrets.DOCKERHUB_TOKEN }} | helm registry login registry-1.docker.io -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin 
+        
+        helm push $NET_TOOLS_PACKAGE  oci://registry-1.docker.io/${{ secrets.DOCKERHUB_TOKEN }} 
