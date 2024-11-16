@@ -44,5 +44,5 @@ jobs:
     - name: Package Chart
       shell: bash
       run: |
-        cd helm/net-tools
+        cd helm
         helm package net-tools
