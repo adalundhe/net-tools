@@ -23,7 +23,7 @@ env:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   
-  build_net_tools:
+  publish_chart:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
@@ -41,3 +41,8 @@ jobs:
       run: |
         curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
         helm version
+    - name: Package Chart
+      shell: bash
+      run: |
+        cd helm/net-tools
+        helm package net-tools
