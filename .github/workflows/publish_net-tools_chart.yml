@@ -49,4 +49,4 @@ jobs:
 
         echo ${{ secrets.DOCKERHUB_TOKEN }} | helm registry login registry-1.docker.io -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin 
         
-        helm push $NET_TOOLS_PACKAGE  oci://registry-1.docker.io/${{ secrets.DOCKERHUB_TOKEN }} 
+        helm push $NET_TOOLS_PACKAGE  oci://registry-1.docker.io/${{ secrets.DOCKERHUB_USERNAME }} 
