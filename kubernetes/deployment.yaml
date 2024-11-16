@@ -1,0 +1,20 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: net-tools
+  labels:
+    app: net-tools
+spec:
+  selector:
+    matchLabels:
+      app: net-tools
+  template:
+    spec:
+      containers:
+        - name: net-tools
+          image: corpheus91/net-tools:bookworm-slim
+          imagePullPolicy: IfNotPresent
+          command: [sleep]
+          args: [infinity]
+
