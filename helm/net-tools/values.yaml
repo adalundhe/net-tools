@@ -1,0 +1,28 @@
+---
+# Default values for net-tools.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+deployment:
+  fullname: net-tools
+  labels: {}
+  image:
+    repository: corpheus91/net-tools
+    pullPolicy: IfNotPresent
+    tag: bookworm-slim
+    securityContext: {}
+    resources: {}
+    command: ["sleep"]
+    args: ["infinity"]
+
+    imagePullSecrets: []
+
+    podAnnotations: {}
+    podLabels: {}
+
+    podSecurityContext: {}
+  nodeSelector: {}
+
+  tolerations: []
+
+affinity: {}
+
