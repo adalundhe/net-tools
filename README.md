@@ -9,6 +9,7 @@ Net-Tools is a debian-based, small image designed to help you diagnose potential
 
 - curl
 - dnsutils
+- iperf3
 - iproute2
 - iputils-ping
 - netcat
