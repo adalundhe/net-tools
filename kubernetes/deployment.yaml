@@ -10,6 +10,9 @@ spec:
     matchLabels:
       app: net-tools
   template:
+    metadata:
+      labels:
+        app: net-tools
     spec:
       containers:
         - name: net-tools
