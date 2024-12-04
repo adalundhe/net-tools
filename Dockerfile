@@ -16,7 +16,8 @@ RUN apt update -y && apt install -y \
     iptables \
     netcat-traditional \
     wrk \
-    sudo
+    sudo \
+    iperf3
 
 RUN groupadd --gid $USER_GID $USERNAME \
     && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME \
