@@ -22,11 +22,12 @@ spec:
       annotations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      {{- with .Values.deployment.podLabels }}
       labels:
+        app: {{ .Values.deployment.fullname }}
+        {{- with .Values.deployment.podLabels }}
         {{- toYaml . | nindent 8 }}
+        {{- end }}
       {{- end }}
-    {{- end }}
     spec:
       {{- with .Values.deployment.imagePullSecrets }}
       imagePullSecrets:
@@ -62,4 +63,3 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-
